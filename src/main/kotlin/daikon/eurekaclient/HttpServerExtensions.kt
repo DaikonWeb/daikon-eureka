@@ -1,4 +1,4 @@
-package daikon.eureka
+package daikon.eurekaclient
 
 import com.netflix.appinfo.ApplicationInfoManager
 import com.netflix.appinfo.InstanceInfo.InstanceStatus.UP
@@ -9,7 +9,7 @@ import com.netflix.discovery.DiscoveryClient
 import daikon.Context
 import daikon.HttpServer
 
-fun HttpServer.publishOnServiceDiscovery(namespace: String = "eureka"): HttpServer {
+fun HttpServer.initDiscoveryClient(namespace: String = "eureka"): HttpServer {
     afterStart { ctx ->
         val instanceConfig = MyDataCenterInstanceConfig(namespace)
         val instanceInfo = EurekaConfigBasedInstanceInfoProvider(instanceConfig).get()

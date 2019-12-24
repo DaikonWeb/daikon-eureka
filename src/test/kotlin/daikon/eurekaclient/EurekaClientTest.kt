@@ -1,7 +1,7 @@
-package daikon.eureka
+package daikon.eurekaclient
 
 import daikon.HttpServer
-import daikon.eureka.Assert.withTimeout
+import daikon.eurekaclient.Assert.withTimeout
 import khttp.get
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterAll
@@ -28,7 +28,7 @@ class EurekaClientTest {
     @Test
     fun `can publish a service on eureka server`() {
         HttpServer()
-            .publishOnServiceDiscovery()
+            .initDiscoveryClient()
             .start().use {
                 withTimeout(50) { assertThat(get("http://localhost:8761/").text).contains("GARLIC") }
             }
@@ -36,11 +36,11 @@ class EurekaClientTest {
 
     @Test
     fun `retrieve a service from the server`() {
-        HttpServer(4546).publishOnServiceDiscovery("onion")
+        HttpServer(4546).initDiscoveryClient("onion")
             .get("/") { _, res -> res.write("I'm onion") }
             .start().use {
                 HttpServer()
-                    .publishOnServiceDiscovery("carrot")
+                    .initDiscoveryClient("carrot")
                     .get("/") { _, res, ctx ->
                         val homePage = ctx.discoveryClient().getNextServerFromEureka("onion", false).homePageUrl
                         res.write("I called onion and it responds: ${get(homePage).text}")

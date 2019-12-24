@@ -1,4 +1,4 @@
-package daikon.eureka
+package daikon.eurekaclient
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -20,7 +20,5 @@ open class EurekaServer : AutoCloseable {
 
     override fun close() {
         run.close()
-        SpringApplication.exit(run)
-        Thread.sleep(30000)
     }
 }

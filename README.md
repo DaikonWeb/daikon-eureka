@@ -21,7 +21,7 @@ repositories {
 ```
 - Add the dependency
 ```
-implementation 'com.github.DaikonWeb:daikon-eureka:0.6.3'
+implementation('com.github.DaikonWeb:daikon-eureka:0.6.3')
 ```
 
 ### Maven

@@ -1,7 +1,7 @@
-package daikon.eurekaclient
+package daikon.eureka
 
 import daikon.HttpServer
-import daikon.eurekaclient.Assert.withTimeout
+import daikon.eureka.Assert.withTimeout
 import khttp.get
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterAll

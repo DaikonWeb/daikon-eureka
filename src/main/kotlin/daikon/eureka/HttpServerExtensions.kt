@@ -1,4 +1,4 @@
-package daikon.eurekaclient
+package daikon.eureka
 
 import com.netflix.appinfo.ApplicationInfoManager
 import com.netflix.appinfo.InstanceInfo.InstanceStatus.UP

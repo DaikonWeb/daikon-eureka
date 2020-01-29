@@ -1,4 +1,4 @@
-package daikon.eurekaclient
+package daikon.eureka
 
 import org.assertj.core.api.AbstractCharSequenceAssert
 import java.time.LocalDateTime

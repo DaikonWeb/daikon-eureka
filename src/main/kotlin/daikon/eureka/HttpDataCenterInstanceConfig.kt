@@ -1,7 +1,7 @@
 package daikon.eureka
 
 import com.netflix.appinfo.MyDataCenterInstanceConfig
-import daikon.Context
+import daikon.core.Context
 
 class HttpDataCenterInstanceConfig(namespace: String, private val context: Context) : MyDataCenterInstanceConfig(namespace) {
 

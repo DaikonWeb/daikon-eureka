@@ -9,7 +9,7 @@ repositories {
 
 dependencies {
     implementation('org.jetbrains.kotlin:kotlin-stdlib-jdk8')
-    implementation('com.github.DaikonWeb:daikon:')
+    implementation('com.github.DaikonWeb:daikon:1.2.1')
     compile('javax.inject:javax.inject:1')
     compile('com.netflix.eureka:eureka-client:1.9.14')
     testImplementation('com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0')

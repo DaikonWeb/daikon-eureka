@@ -2,13 +2,13 @@ package daikon.eureka
 
 import daikon.HttpServer
 import daikon.eureka.Assert.withTimeout
-import khttp.get
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
+import topinambur.http
 
 @TestInstance(PER_CLASS)
 class EurekaClientTest {
@@ -30,7 +30,7 @@ class EurekaClientTest {
         HttpServer()
             .initDiscoveryClient()
             .start().use {
-                withTimeout(50) { assertThat(get("http://localhost:8761/").text).contains("GARLIC") }
+                withTimeout(50) { assertThat("http://localhost:8761/".http.get().body).contains("GARLIC") }
             }
     }
 
@@ -43,11 +43,11 @@ class EurekaClientTest {
                     .initDiscoveryClient("carrot")
                     .get("/") { _, res, ctx ->
                         val homePage = ctx.discoveryClient().getNextServerFromEureka("onion", false).homePageUrl
-                        res.write("I called onion and it responds: ${get(homePage).text}")
+                        res.write("I called onion and it responds: ${homePage.http.get().body}")
                     }
                     .start().use {
                         withTimeout(60) {
-                            assertThat(get("http://localhost:4545/").text)
+                            assertThat("http://localhost:4545/".http.get().body)
                                 .isEqualTo("I called onion and it responds: I'm onion")
                         }
                     }

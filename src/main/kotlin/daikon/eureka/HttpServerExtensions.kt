@@ -5,8 +5,8 @@ import com.netflix.appinfo.InstanceInfo.InstanceStatus.UP
 import com.netflix.appinfo.providers.EurekaConfigBasedInstanceInfoProvider
 import com.netflix.discovery.DefaultEurekaClientConfig
 import com.netflix.discovery.DiscoveryClient
-import daikon.core.Context
 import daikon.HttpServer
+import daikon.core.Context
 
 fun HttpServer.initDiscoveryClient(namespace: String = "eureka"): HttpServer {
     afterStart { ctx ->
